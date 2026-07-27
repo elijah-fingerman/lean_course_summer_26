@@ -27,25 +27,25 @@ name = "Exercises"
 
 [[lean_lib]]
 name = "LectureNotes"
-srcDir = "lecture-notes"
-roots = ["lecture5.examples5"]
+srcDir = "."
+roots = ["LectureNotes.lecture5.examples5", "LectureNotes.lecture6.examples6"]
 
 [[lean_lib]]
 name = "Lecture1Slides"
-srcDir = "lecture-notes"
+srcDir = "LectureNotes"
 roots = ["lecture1.lecture1"]
 
 [[lean_exe]]
 name = "lecture1-slides"
-srcDir = "lecture-notes"
+srcDir = "LectureNotes"
 root = "lecture1.main"
 
 [[lean_lib]]
 name = "Lecture2Slides"
-srcDir = "lecture-notes"
+srcDir = "LectureNotes"
 roots = ["lecture2.lecture2"]
 
 [[lean_exe]]
 name = "lecture2-slides"
-srcDir = "lecture-notes"
+srcDir = "LectureNotes"
 root = "lecture2.main"

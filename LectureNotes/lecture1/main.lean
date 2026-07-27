@@ -22,6 +22,6 @@ def main : IO UInt32 :=
       hash := true
       center := true
       extraCss := #[lectureTheme]
-      outputDir := "lecture-notes/lecture1/output"
+      outputDir := "LectureNotes/lecture1/output"
     })
     (doc := %doc lecture1.lecture1)

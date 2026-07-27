@@ -10,7 +10,7 @@ lake build lecture1-slides
 lake exe lecture1-slides
 ```
 
-The generated presentation is written to `lecture-notes/lecture1/output/index.html`.
+The generated presentation is written to `LectureNotes/lecture1/output/index.html`.
 Serve that directory with any local HTTP server to present it.
 
 Lecture 2 follows the same layout:
@@ -20,4 +20,4 @@ lake build lecture2-slides
 lake exe lecture2-slides
 ```
 
-Its output is written to `lecture-notes/lecture2/output/index.html`.
+Its output is written to `LectureNotes/lecture2/output/index.html`.
