@@ -15,6 +15,10 @@ variable {n m : ℕ} {x : ℚ} {f : ℝ → ℝ}
 
 #check (1/n : ℚ)
 
+#check (n : ℚ)
+
+#check @Nat.cast ℚ _
+
 #check x + 1/n
 
 #check (x : ℝ) + (1/n : ℝ)
@@ -73,7 +77,10 @@ def p : HalfPlane where
   xlty := by norm_num
 
 -- Trick: use _ to create a skeleton of the structure.
-def q : HalfPlane := sorry
+def q : HalfPlane where
+  x := sorry
+  y := sorry
+  xlty := sorry
 
 /- Dot notation accesses the fields of a structure. -/
 #check p.x
@@ -124,8 +131,8 @@ structure RatSeq where
   x : ℕ → ℚ
 
 /-
-This instance tells Lean that a `RatSeq` may be used as a function `ℕ → ℚ`.
-Thus, `f n` uses the stored function `f.x`.
+This instance tells Lean that a `x : RatSeq` may be used as a function `x : ℕ → ℚ`.
+Thus, `x n` uses the stored function `f.x`.
 -/
 instance : CoeFun RatSeq (fun _ => ℕ → ℚ) where
   coe f := f.x
@@ -242,6 +249,29 @@ example : RatCauchySeq ≃ {x : RatSeq | isCauchy x} := by
 
 --By using a structure instead of a subtype we get direct access to the fields of the structure.
 example (x : RatCauchySeq) : isCauchy x.x := x.isCauchy
+
+
+/-
+This is roughly how the real numbers are defined in lean: as equivalence classes of Cauchy sequences
+of rational numbers. Feel free to explore a bit here and try to define for example addition.
+-/
+
+def CauchyRel : RatCauchySeq → RatCauchySeq → Prop :=
+  fun x y ↦ ∀ ε > 0, ∃ N, ∀ n≥ N, |(x.x n) - (y.x n)| < ε
+
+theorem CauchyRel_equiv : Equivalence CauchyRel := by
+  sorry
+
+def CauchySetoid : Setoid RatCauchySeq where
+  r := CauchyRel
+  iseqv := CauchyRel_equiv
+
+def Real := Quotient CauchySetoid
+
+def Rat.toReal (x : ℚ) : Real := by
+  refine Quotient.mk CauchySetoid ⟨⟨fun n => x⟩, ?_⟩
+  sorry
+
 
 end MySequences
 
