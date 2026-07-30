@@ -28,7 +28,11 @@ name = "Exercises"
 [[lean_lib]]
 name = "LectureNotes"
 srcDir = "."
-roots = ["LectureNotes.lecture5.examples5", "LectureNotes.lecture6.examples6"]
+roots = [
+  "LectureNotes.lecture5.examples5",
+  "LectureNotes.lecture6.examples6",
+  "LectureNotes.lecture7.examples7",
+]
 
 [[lean_lib]]
 name = "Lecture1Slides"

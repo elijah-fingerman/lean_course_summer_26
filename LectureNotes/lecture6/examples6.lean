@@ -184,22 +184,22 @@ and `N`.
 -/
 def isCauchy (x : RatSeq) := ∀ ε > 0, ∃ N, ∀ m≥ N, ∀ n≥ N, dist (x m) (x n) < ε
 
-def tends_to (x : RatSeq) (a : ℚ) := ∀ ε > 0, ∃ N, ∀ n≥ N, dist (x n) a < ε
+def tends_toRat (x : RatSeq) (a : ℚ) := ∀ ε > 0, ∃ N, ∀ n≥ N, dist (x n) a < ε
 
 def isCauchyReal (x : RealSeq) := ∀ ε > 0, ∃ N, ∀ m≥ N, ∀ n≥ N, dist (x m) (x n) < ε
 
-def tends_toReal (x : RealSeq) (a : ℝ) := ∀ ε > 0, ∃ N, ∀ n≥ N, dist (x n) a < ε
+abbrev tends_to (x : RealSeq) (a : ℝ) := ∀ ε > 0, ∃ N, ∀ n≥ N, dist (x n) a < ε
 
 
--- We can evaluate `tends_toReal` on a sequence of rational numbers.
-example (x : RatSeq) (a : ℝ) : tends_toReal x a := by sorry
+-- We can evaluate `tends_to` on a sequence of rational numbers.
+example (x : RatSeq) (a : ℝ) : tends_to x a := by sorry
 
 -- Find the proof of this on the exercise sheet.
 lemma isCauchy_toReal (x : RatSeq) : isCauchy x → isCauchyReal x := by
   sorry
 
 -- This is essentially the definition of the real numbers.
-theorem real_numbers_complete {x : RatSeq} (hx : isCauchy x) : ∃ a : ℝ, tends_toReal x a := by
+theorem real_numbers_complete {x : RealSeq} (hx : isCauchyReal x) : ∃ a : ℝ, tends_to x a := by
   sorry
 
 #check ℝ --ctrl + click to see the actual definition!
@@ -212,7 +212,7 @@ positive number.
 
 #check @eq_of_forall_dist_le _ _ a b
 
-lemma tends_toReal_unique {x : RealSeq} {a b : ℝ} (hx : tends_toReal x a) (hy : tends_toReal x b) :
+lemma tends_toReal_unique {x : RealSeq} {a b : ℝ} (hx : tends_to x a) (hy : tends_to x b) :
   a = b := by
   apply eq_of_forall_dist_le
   intro ε hε
