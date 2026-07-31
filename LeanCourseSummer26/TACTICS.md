@@ -1,42 +1,45 @@
 # Tactics used in the course
 
-References point to the See in the lecture example files and
-exercise sheets.
+References point to occurrences in the lecture example files and exercise
+sheets.
 
 ## Introducing new objects
 
 - `intro` — Introduces variables or assumptions from an implication or
-  universal quantifier into the context. [See (../lecture-notes/lecture1/examples1.lean#L34)]
+  universal quantifier into the context. [See](../LectureNotes/lecture1/examples1.lean#L34)
 
 - `ext` — Applies extensionality, reducing equality of structured objects to
-  equality of their components or values. [See (../exercises/sheet3.lean#L187)]
+  equality of their components or values. [See](../exercises/sheet3.lean#L187)
 
 - `cases` — Splits an inductive object or hypothesis into one goal for each
-  possible constructor. [See (../lecture-notes/lecture2/examples2.lean#L60)]
+  possible constructor. [See](../LectureNotes/lecture2/examples2.lean#L60)
 
 - `rcases` — Destructures a hypothesis using patterns; it can unpack
-  conjunctions and existentials or split disjunctions. [See (../exercises/sheet1.lean#L19)]
+  conjunctions and existentials or split disjunctions. [See](../exercises/sheet1.lean#L19)
 
 - `rintro` — Combines `intro` and `rcases`: it introduces an assumption and
-  immediately destructures it with a pattern. [See (../exercises/sheet3.lean#L59)]
+  immediately destructures it with a pattern. [See](../exercises/sheet3.lean#L59)
 
 - `have` — Adds an intermediate fact to the context, either with an explicit
-  proof or by inference. [See (../lecture-notes/lecture2/examples2.lean#L72)]
+  proof or by inference. [See](../LectureNotes/lecture2/examples2.lean#L72)
 
 - `obtain` — Gives names to, and optionally destructures, the result of an
-  expression. [See (../lecture-notes/lecture4/examples4.lean#L144)]
+  expression. [See](../LectureNotes/lecture4/examples4.lean#L144)
 
-- `let` — Introduces a local definition for an expression. [See (../exercises/sheet2.lean#L43)]
+- `let` — Introduces a local definition for an expression. [See](../exercises/sheet2.lean#L43)
+
+- `set x := t with hx` — Introduces `x` as a local name for `t` and records the
+  defining equality as `hx`. [See](../LectureNotes/lecture7/examples7.lean#L89)
 
 - `induction` — Starts an induction proof, creating a case for each constructor
-  and providing the relevant induction hypotheses. [See (../lecture-notes/lecture1/examples1.lean#L17)]
+  and providing the relevant induction hypotheses. [See](../LectureNotes/lecture1/examples1.lean#L17)
 
 - `by_contra` / `by_contra!` — Proves the goal by contradiction. The `!`
-  version also simplifies the negated hypothesis. [First `by_contra` (../lecture-notes/lecture2/examples2.lean#L127)];
-  [first `by_contra!`(../exercises/sheet2.lean#L21)]
+  version also simplifies the negated hypothesis. [See `by_contra`](../LectureNotes/lecture2/examples2.lean#L127);
+  [see `by_contra!`](../exercises/sheet2.lean#L21)
   
 - `by_cases` — Splits into two cases according to whether a proposition is true
-  or false. [See (../exercises/sheet1.lean#L12)]
+  or false. [See](../exercises/sheet1.lean#L12)
 
 ## Manipulating the tactic state
 
@@ -45,40 +48,50 @@ locations, `at h` applies the tactic to hypothesis `h`, and `at *` applies it
 throughout the context and to the goal.
 
 - `exact` — Closes the goal with a proof term of exactly the required type.
-  [See (../lecture-notes/lecture1/examples1.lean#L19)]
+  [See](../LectureNotes/lecture1/examples1.lean#L19)
+
+- `exact_mod_cast` — Closes the goal using a proof stated with compatible
+  numeric casts inserted or removed. [See](../exercises/sheet5.lean#L21)
 
 - `contradiction` — Closes the goal when the context contains incompatible
-  hypotheses, such as both `P` and `¬ P`. [See (../exercises/sheet1.lean#L25)]
+  hypotheses, such as both `P` and `¬ P`. [See](../exercises/sheet1.lean#L25)
 
 - `rw` / `rewrite` / `nth_rewrite` — Rewrites using equalities. `rw` is the
   short form of `rewrite`; `nth_rewrite n` rewrites only the chosen occurrence.
-  [First `rw`(../lecture-notes/lecture1/examples1.lean#L11)];
-  [first `nth_rewrite`(../exercises/sheet3.lean#L114)]
+  [See `rw`](../LectureNotes/lecture1/examples1.lean#L11);
+  [see `nth_rewrite`](../exercises/sheet3.lean#L114)
 
 - `apply` — Matches a theorem's conclusion with the target and creates goals
-  for its remaining assumptions. [See (../lecture-notes/lecture2/examples2.lean#L16)]
+  for its remaining assumptions. [See](../LectureNotes/lecture2/examples2.lean#L16)
+
+- `specialize` — Instantiates a universally quantified hypothesis with chosen
+  arguments, replacing it with the resulting statement. [See](../exercises/sheet5.lean#L101)
 
 - `refine` — Supplies a partial proof term; each `?_` hole becomes a new goal.
-  It acts on the goal rather than at a hypothesis. [See (../lecture-notes/lecture3/examples3.lean#L69)]
+  It acts on the goal rather than at a hypothesis. [See](../LectureNotes/lecture3/examples3.lean#L69)
 
-- `use` — Supplies a witness for an existential goal. [See (../exercises/sheet1.lean#L66)]
+- `use` — Supplies a witness for an existential goal. [See](../exercises/sheet1.lean#L66)
 
 - `constructor` — Applies the goal's constructor; for `P ∧ Q` or `P ↔ Q`, it
-  creates two goals. [See (../lecture-notes/lecture2/examples2.lean#L28)]
+  creates two goals. [See](../LectureNotes/lecture2/examples2.lean#L28)
 
 - `left` / `right` — Selects the left or right side of a disjunction.
   The corresponding proof terms are `Or.inl h` and `Or.inr h`.
-  [See (../lecture-notes/lecture2/examples2.lean#L45)]
+  [See](../LectureNotes/lecture2/examples2.lean#L45)
 
-- `push Not` — Pushes negations inward through logical expressions. [See (../lecture-notes/lecture3/examples3.lean#L121)]
+- `push Not` — Pushes negations inward through logical expressions.
+  [See](../LectureNotes/lecture3/examples3.lean#L121)
 
 - `change` — Replaces the target with a definitionally equal, more convenient
-  formulation. [See (../lecture-notes/lecture5/examples5.lean#L172)]
+  formulation. [See](../LectureNotes/lecture5/examples5.lean#L172)
 
 ## Specialized tactics
 
 - `simp` — Rewrites repeatedly using simplification lemmas. Prefer `simp?` when
   developing a proof: it suggests a reproducible `simp only [...]` call.
+
+- `positivity` — Proves positivity, nonnegativity, or nonzeroness from the
+  structure of an expression and facts in the context. [See](../exercises/sheet5.lean#L18)
 
 - `linarith` — Solves goals that follow from linear equalities and inequalities
   in the context. 
@@ -93,4 +106,4 @@ throughout the context and to the goal.
   the goal and hypotheses. 
 
 - `calc` — Writes a chain of equalities or relations, with a proof for each
-  step. [See (../lecture-notes/lecture3/examples3.lean#L63)]
+  step. [See](../LectureNotes/lecture3/examples3.lean#L63)

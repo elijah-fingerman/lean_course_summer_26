@@ -21,7 +21,7 @@ theorem exercise1 {ε : ℝ} (hε : ε > 0) : ∃ δ : ℕ , δ > 0 ∧ (1 / δ)
         exact_mod_cast Int.toNat_of_nonneg (show 0 ≤ ⌈1 / ε⌉ by positivity)
       rw[h]
       exact Int.le_ceil (1 / ε)
-    · refine Nat.cast_pos'.mpr ?_
+    · apply Nat.cast_pos'.mpr
       exact Nat.ceil_pos.mpr (show 0 < ⌈1 / ε⌉ by positivity)
     exact hε
   use 1
