@@ -88,10 +88,10 @@ Use a bisection construction:
    `l` converges. This `a` will be the supremum; do not identify it with
    the library term `sSup S`.
 
-6) Use the two lemmas below to show that `a` satisfied the least-upper-bound property.
+6) Use the two lemmas above about limits to show that `a` satisfied the least-upper-bound property.
 Hint: a is also the limit of the sequence `u`.
 
-7) Prove the at least one of the lemmas below.
+7) Prove the at least one of the lemmas about limits above.
 -/
 
 lemma exercise2 {S : Set ℝ} (hS : S.Nonempty) (u : upperBounds S) :
